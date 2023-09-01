@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="newcss.css">
+        <title>Paseo Canino</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="webista.css">
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="https://img.freepik.com/vector-gratis/lindo-personaje-dibujos-animados-perro-sentado_1308-135528.jpg" />
+        <script>
+            function agregarElemento() {
+                var nuevoElemento = document.getElementById("tipoPerros").value;
+                if (nuevoElemento !== "") {
+                    var lista = document.getElementById("listaElementos");
+                    var li = document.createElement("li");
+                    li.appendChild(document.createTextNode(nuevoElemento));
+
+                    var input = document.createElement("input");
+                    input.type = "hidden";
+                    input.name = "tipoPerro" + lista.children.length;
+                    input.value = nuevoElemento;
+                    li.appendChild(input);
+
+
+                    lista.appendChild(li);
+                    document.getElementById("tipoPerros").value = ""; // Limpiar el input
+                }
+            }
+
+            function limpiarLista() {
+                var lista = document.getElementById("listaElementos");
+                lista.innerHTML = ""; // Limpiar la lista
+            }
+        </script>
+    </head>
+    <body>
+        <h3>IMPORTANCIA DEL PASEO DE TU MASCOTA</h3>
+        <p>Tu perro necesita paseos, además de otras actividades que le ayudarán a satisfacer sus necesidades naturales.</p>
+        <p>Los tamaños son grande, mediano o chico</p>
+        <form action="proceso.jsp" method="post">
+            <label>Número de Mascotas:</label>
+            <input type="number" name="numMascota"><br><br>
+            <label>Horas de Paseo:</label>
+            <input type="number" name="horaPaseo"><br><br>
+            <label>Tipo de Perro:</label>
+            <input type="text" id="tipoPerros" placeholder="Nuevo elemento">
+            <button type="button" onclick="agregarElemento()">Agregar</button>
+            <button type="button" onclick="limpiarLista()">Eliminar</button>
+            <ul id="listaElementos"></ul>
+            <input type="submit" name="botoncito" value="Calcular Precio">
+        </form>
+        
+    </body>
+</html>
